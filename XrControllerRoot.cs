@@ -1,6 +1,6 @@
 using Godot;
 using System;
-public partial class MyNode3D : Node3D
+public partial class XrControllerRoot : Node3D
 {
     private XRInterface _xrInterface;
 
