@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bwmaogrvqr1aq"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hwv7x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5nnt"]
+albedo_color = Color(0.05845148, 0.64220685, 3.85046e-07, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hwv7x"]
+material = SubResource("StandardMaterial3D_q5nnt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtfgv"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q5nnt"]
+material = SubResource("StandardMaterial3D_jtfgv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6exb"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jtfgv"]
+material = SubResource("StandardMaterial3D_q6exb")
+size = Vector3(3.4702148, 2, 3)
+
+[node name="JoyTesting" type="Node3D" unique_id=1477844706]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=89351259]
+transform = Transform3D(1, 0, 0, 0, 0.43870246, 0.8986323, 0, -0.8986323, 0.43870246, 0, 6.997866, 0)
+light_energy = 1.426
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1669199714]
+transform = Transform3D(77.11673, 0, 0, 0, 1, 0, 0, 0, 77.11673, 0, 0, 0)
+mesh = SubResource("PlaneMesh_hwv7x")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=1458715851]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27566767, 0)
+
+[node name="XRAnchor3D" type="XRAnchor3D" parent="XROrigin3D" unique_id=892730771]
+tracker = &"head"
+
+[node name="LeftHand" type="XRController3D" parent="XROrigin3D" unique_id=2005249704]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.81, 0)
+tracker = &"right_hand"
+
+[node name="HandRepresentation" type="MeshInstance3D" parent="XROrigin3D/LeftHand" unique_id=1217593570]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_hwv7x")
+
+[node name="RightHand" type="XRController3D" parent="XROrigin3D" unique_id=1264278137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.81, 0)
+tracker = &"left_hand"
+
+[node name="HandRepresentation" type="MeshInstance3D" parent="XROrigin3D/RightHand" unique_id=82949965]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_q5nnt")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=2080656412]
+transform = Transform3D(0.8480484, 0.36446598, -0.3846797, 0, 0.725922, 0.68777704, 0.5299188, -0.5832682, 0.615617, 0, 6.997866, 0)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1023778782]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=246682556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0423098, 0.9839661, -11.062108)
+mesh = SubResource("BoxMesh_jtfgv")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1556433791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.930676, 0.92890394, -11.527667)
+mesh = SubResource("BoxMesh_jtfgv")
