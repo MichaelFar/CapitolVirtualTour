@@ -10,6 +10,23 @@ size = Vector3(0.1, 0.1, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_boayp"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_g761s"]
+viewport_path = NodePath("XROrigin3D/XRCamera3D/UIPlane/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_boayp"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_g761s")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hwv7x"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_boayp")
+
+[sub_resource type="LabelSettings" id="LabelSettings_bwg4x"]
+font_size = 39
+outline_size = 19
+outline_color = Color(0, 0, 0, 1)
+
 [node name="XrController" type="Node3D" unique_id=1912324114]
 script = ExtResource("1_hf2p5")
 
@@ -47,3 +64,23 @@ script = ExtResource("2_bwg4x")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=2010420355]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="UIPlane" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" unique_id=298072856]
+transform = Transform3D(0.6488742, 0, 0, 0, -4.371139e-08, -0.39201087, 0, 1, -1.7135338e-08, 0, 0.03519249, -0.55170953)
+mesh = SubResource("PlaneMesh_hwv7x")
+
+[node name="SubViewport" type="SubViewport" parent="XROrigin3D/XRCamera3D/UIPlane" unique_id=234276114]
+transparent_bg = true
+
+[node name="UITest" type="CanvasLayer" parent="XROrigin3D/XRCamera3D/UIPlane/SubViewport" unique_id=1584177437]
+
+[node name="Label" type="Label" parent="XROrigin3D/XRCamera3D/UIPlane/SubViewport/UITest" unique_id=1492511749]
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.883
+anchor_right = 0.92100006
+anchor_bottom = 0.94600004
+text = "Holy shit, it's UI!!!! :D"
+label_settings = SubResource("LabelSettings_bwg4x")
+horizontal_alignment = 1
+vertical_alignment = 1

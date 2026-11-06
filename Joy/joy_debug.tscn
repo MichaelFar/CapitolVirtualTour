@@ -48,22 +48,6 @@ albedo_texture = SubResource("ViewportTexture_u4pi3")
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_10l6v")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6exb"]
-albedo_color = Color(0, 1, 0.083333254, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_hwv7x"]
-material = SubResource("StandardMaterial3D_q6exb")
-radius = 0.25
-height = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtfgv"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_q5nnt"]
-material = SubResource("StandardMaterial3D_jtfgv")
-radius = 0.25
-height = 0.5
-
 [node name="MichaelDebug" type="Node3D" unique_id=2004663829]
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=415055716]
@@ -86,7 +70,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 169
-text = "Hello World!"
+text = "Goodbye World!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -131,22 +115,3 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.1
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=886934291]
 transform = Transform3D(-7.153136e-08, -1, 0, -7.153136e-08, 1.9106855e-15, -1, 1.6364467, -4.371139e-08, -4.371139e-08, 1.1580305, 1.0098057, 0.03829813)
 mesh = SubResource("PlaneMesh_01xyt")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=300794317]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1748143, 0)
-
-[node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=424928753]
-
-[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=1756021183]
-
-[node name="XRLeftController" type="XRController3D" parent="XROrigin3D" unique_id=940534770]
-tracker = &"left_hand"
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRLeftController" unique_id=746137075]
-mesh = SubResource("CapsuleMesh_hwv7x")
-
-[node name="XRRightController" type="XRController3D" parent="XROrigin3D" unique_id=856051590]
-tracker = &"right_hand"
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRRightController" unique_id=450638525]
-mesh = SubResource("CapsuleMesh_q5nnt")

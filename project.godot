@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CapitolVirtualTour"
-run/main_scene="uid://baw0rw5kikspq"
+run/main_scene="uid://cydeg88drx2x8"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
