@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://bq0eevv51q703"]
 
 [ext_resource type="Script" uid="uid://mxg51uib6a3d" path="res://XrControllerRoot.cs" id="1_hf2p5"]
+[ext_resource type="Script" uid="uid://bisd4fc722j65" path="res://scripts/HighlightChecker.cs" id="2_bwg4x"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_al6tu"]
+size = Vector3(0.1, 0.1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bwg4x"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_boayp"]
 
 [node name="XrController" type="Node3D" unique_id=1912324114]
 script = ExtResource("1_hf2p5")
@@ -11,9 +19,31 @@ script = ExtResource("1_hf2p5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
 tracker = &"left_hand"
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftHand" unique_id=371954073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5307808)
+mesh = SubResource("BoxMesh_al6tu")
+
+[node name="Marker3D" type="Marker3D" parent="XROrigin3D/LeftHand" unique_id=540239332]
+
+[node name="HighlightShapeCast" type="ShapeCast3D" parent="XROrigin3D/LeftHand" unique_id=1471494194]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.003270626, -0.009770751, 0.57151127)
+shape = SubResource("SphereShape3D_bwg4x")
+script = ExtResource("2_bwg4x")
+
 [node name="RightHand" type="XRController3D" parent="XROrigin3D" unique_id=468723929]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/RightHand" unique_id=937054281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5307808)
+mesh = SubResource("BoxMesh_al6tu")
+
+[node name="Marker3D" type="Marker3D" parent="XROrigin3D/RightHand" unique_id=231422726]
+
+[node name="HighlightShapeCast" type="ShapeCast3D" parent="XROrigin3D/RightHand" unique_id=242249355]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.47945818)
+shape = SubResource("SphereShape3D_boayp")
+script = ExtResource("2_bwg4x")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=2010420355]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bs72ogkvdd7d6"]
 
 [ext_resource type="Script" uid="uid://cydm7x8wwhenx" path="res://scenes/ProtoController.cs" id="1_qhypi"]
+[ext_resource type="Script" uid="uid://bisd4fc722j65" path="res://scripts/HighlightChecker.cs" id="2_rji43"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
 albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
@@ -12,6 +13,9 @@ height = 1.8
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iof21"]
 radius = 0.4
 height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3uhrl"]
+height = 4.244
 
 [node name="ProtoController" type="CharacterBody3D" unique_id=1412936445 node_paths=PackedStringArray("_collider", "_head")]
 collision_layer = 3
@@ -37,3 +41,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=493116619]
 cull_mask = 1048569
+
+[node name="HighlightShapeCast" type="ShapeCast3D" parent="Head/Camera3D" unique_id=1091738201]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.1689136, -1.1505291)
+shape = SubResource("CapsuleShape3D_3uhrl")
+script = ExtResource("2_rji43")
