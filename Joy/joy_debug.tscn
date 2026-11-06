@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://cydeg88drx2x8"]
+
+[ext_resource type="Shader" uid="uid://b8mcvert70igg" path="res://shaders/highlightshader.gdshader" id="1_q7cjx"]
+[ext_resource type="Script" uid="uid://dayowdewkn7ik" path="res://scripts/HighlightVolume.cs" id="2_srjt6"]
+[ext_resource type="PackedScene" uid="uid://bq0eevv51q703" path="res://scenes/XRController.tscn" id="3_1ya85"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r5aeh"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_ncmou"]
+sky_material = SubResource("ProceduralSkyMaterial_r5aeh")
+
+[sub_resource type="Environment" id="Environment_bm73g"]
+background_mode = 2
+sky = SubResource("Sky_ncmou")
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wd65j"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_al6tu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bm73g"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_q7cjx")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/size = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ncmou"]
+resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_bm73g")
+
+[sub_resource type="BoxMesh" id="BoxMesh_wd65j"]
+material = SubResource("StandardMaterial3D_ncmou")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_42c5h"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_u4pi3"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10l6v"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_u4pi3")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_01xyt"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_10l6v")
+
+[node name="MichaelDebug" type="Node3D" unique_id=2004663829]
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=415055716]
+size = Vector2i(1148, 415)
+
+[node name="Label" type="Label" parent="SubViewport" unique_id=1619200111]
+modulate = Color(1, 0.27058825, 1, 1)
+self_modulate = Color(1, 0.1254902, 1, 1)
+top_level = true
+z_as_relative = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -402.0
+offset_top = -85.0
+offset_right = 315.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 169
+text = "Hello World!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=374733017]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2057557122]
+environment = SubResource("Environment_bm73g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=50697491]
+transform = Transform3D(36.37584, 0, 0, 0, 1, 0, 0, 0, 39.76732, 0, 0, 0)
+mesh = SubResource("PlaneMesh_wd65j")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1557351678]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1299692092]
+shape = SubResource("WorldBoundaryShape3D_al6tu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1322266762]
+transform = Transform3D(3.9704275, 0, 0, 0, 0.22209531, 0, 0, 0, 1, 0, 0.541476, 1.5933745)
+mesh = SubResource("BoxMesh_wd65j")
+
+[node name="HighlightVolume" type="Area3D" parent="MeshInstance3D2" unique_id=822356321]
+script = ExtResource("2_srjt6")
+highlightMaterial = SubResource("StandardMaterial3D_ncmou")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/HighlightVolume" unique_id=1774335778]
+shape = SubResource("ConcavePolygonShape3D_42c5h")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1349121190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541476, -1.9631681)
+mesh = SubResource("BoxMesh_wd65j")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1565591033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0334508, 0.541476, 0.08432031)
+mesh = SubResource("BoxMesh_wd65j")
+
+[node name="XrController" parent="." unique_id=1912324114 instance=ExtResource("3_1ya85")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.13961792, 4.7683716e-07, 0.05796057)
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=886934291]
+transform = Transform3D(-7.153136e-08, -1, 0, -7.153136e-08, 1.9106855e-15, -1, 1.6364467, -4.371139e-08, -4.371139e-08, 1.1580305, 1.0098057, 0.03829813)
+mesh = SubResource("PlaneMesh_01xyt")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=300794317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1748143, 0)
