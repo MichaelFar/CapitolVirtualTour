@@ -4,7 +4,10 @@ public partial class TextBillboard : MeshInstance3D
 {
 
 	[Export]
-	private string[] _paragraphs;
+	private string[] paragraphs;
+
+	[Export]
+	private VBoxContainer container;
 
 	private VBoxContainer vbox;
 

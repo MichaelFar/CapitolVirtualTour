@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cydeg88drx2x8"]
 
 [ext_resource type="Shader" uid="uid://b8mcvert70igg" path="res://shaders/highlightshader.gdshader" id="1_wc674"]
-[ext_resource type="Script" uid="uid://dayowdewkn7ik" path="res://scripts/HighlightVolume.cs" id="2_of3nn"]
+[ext_resource type="Script" path="res://scripts/HighlightVolume.cs" id="2_of3nn"]
 [ext_resource type="PackedScene" uid="uid://bq0eevv51q703" path="res://scenes/XRController.tscn" id="3_fjov7"]
 [ext_resource type="PackedScene" uid="uid://6re0pt737gpr" path="res://Joy/Scenes/text_billboard.tscn" id="5_of3nn"]
-[ext_resource type="Script" uid="uid://cv8lkhaou1mab" path="res://Joy/Scripts/TextBillboard.cs" id="6_fjov7"]
+[ext_resource type="PackedScene" uid="uid://bsgbi87xwr6g0" path="res://Joy/Scenes/Watch.tscn" id="7_euqoc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r5aeh"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -54,17 +54,17 @@ material = SubResource("StandardMaterial3D_10l6v")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwv7x"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fjov7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_of3nn"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_euqoc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fjov7"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = SubResource("ViewportTexture_fjov7")
+albedo_texture = SubResource("ViewportTexture_of3nn")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_n0q13"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_euqoc"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_euqoc")
+material = SubResource("StandardMaterial3D_fjov7")
 
 [node name="JoyDebug" type="Node3D" unique_id=2004663829]
 
@@ -139,16 +139,19 @@ transform = Transform3D(0.0010597892, -0.3295321, 0.9441438, 0.00036989534, 0.94
 current = true
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=852508424]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.6541952, -1.7601358)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7694168, 0.6541952, -0.7074952)
 mesh = SubResource("BoxMesh_jtfgv")
 
 [node name="Area3D" type="Area3D" parent="MeshInstance3D6" unique_id=1714888343]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D6/Area3D" unique_id=50895848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.016711712)
 shape = SubResource("BoxShape3D_hwv7x")
 
 [node name="TextBillboard" parent="." unique_id=521224117 instance=ExtResource("5_of3nn")]
 transform = Transform3D(-4.4847884e-08, 1.026, 0, 4.4847884e-08, 1.9603633e-15, -0.75, -1.026, -4.4847884e-08, -3.278354e-08, -4.861997, 0.75000006, 2.3986287)
-mesh = SubResource("PlaneMesh_n0q13")
-script = ExtResource("6_fjov7")
-_paragraphs = PackedStringArray("", "", "", "", "", "")
+mesh = SubResource("PlaneMesh_euqoc")
+
+[node name="Watch" parent="." unique_id=368534118 instance=ExtResource("7_euqoc")]
+transform = Transform3D(0.8027834, 0, 0.5962707, 0, 1, 0, -0.5962707, 0, 0.8027834, -3.4938352, 0.5000001, -2.4285247)
+nextScene = "res://Joy/Scenes/greenworld.tscn"
