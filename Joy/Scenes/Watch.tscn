@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://bsgbi87xwr6g0"]
+
+[ext_resource type="Script" uid="uid://dmhjyokjy2647" path="res://Joy/Scripts/Watch.cs" id="1_oq1d7"]
+[ext_resource type="FontFile" uid="uid://de3jwkcdo7v1f" path="res://Joy/Fonts/FrankRuhlLibre-VariableFont_wght.ttf" id="2_3avop"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5nnt"]
+albedo_color = Color(0.83, 0.5948334, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hwv7x"]
+material = SubResource("StandardMaterial3D_q5nnt")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hwv7x"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_06iqs"]
+viewport_path = NodePath("UI/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3sxrw"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_06iqs")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fkucv"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_3sxrw")
+
+[sub_resource type="LabelSettings" id="LabelSettings_3avop"]
+font = ExtResource("2_3avop")
+font_size = 35
+
+[node name="Watch" type="MeshInstance3D" unique_id=368534118]
+mesh = SubResource("BoxMesh_hwv7x")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=673361655 node_paths=PackedStringArray("timer", "indicator")]
+script = ExtResource("1_oq1d7")
+timer = NodePath("../Timer")
+indicator = NodePath("../UI/SubViewport/ProgressBar")
+
+[node name="Collider" type="CollisionShape3D" parent="Area3D" unique_id=758585780]
+shape = SubResource("BoxShape3D_hwv7x")
+
+[node name="UI" type="MeshInstance3D" parent="." unique_id=547013528]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 1.0394394, 0)
+mesh = SubResource("PlaneMesh_fkucv")
+
+[node name="SubViewport" type="SubViewport" parent="UI" unique_id=393747567]
+size = Vector2i(567, 516)
+
+[node name="Label" type="Label" parent="UI/SubViewport" unique_id=1526925930]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hold hand on the watch to
+go to the next area."
+label_settings = SubResource("LabelSettings_3avop")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/SubViewport" unique_id=551035752]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 3.0
+fill_mode = 1
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="." unique_id=532329786]
+wait_time = 3.0
+
+[connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
+[connection signal="area_exited" from="Area3D" to="Area3D" method="_on_area_exited"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

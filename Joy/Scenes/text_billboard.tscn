@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://6re0pt737gpr"]
+
+[ext_resource type="FontFile" uid="uid://de3jwkcdo7v1f" path="res://Joy/Fonts/FrankRuhlLibre-VariableFont_wght.ttf" id="1_afj6i"]
+[ext_resource type="FontFile" uid="uid://dsd4ev6vashv2" path="res://Joy/Fonts/RedditSansCondensed-VariableFont_wght.ttf" id="2_4h7vy"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_15wcp"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4h7vy"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_15wcp")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_afj6i"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_4h7vy")
+
+[sub_resource type="LabelSettings" id="LabelSettings_hwv7x"]
+font = ExtResource("1_afj6i")
+font_size = 35
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q5nnt"]
+font = ExtResource("2_4h7vy")
+font_size = 17
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jtfgv"]
+font = ExtResource("1_afj6i")
+font_size = 27
+font_color = Color(0, 0, 0, 1)
+
+[node name="TextBillboard" type="MeshInstance3D" unique_id=521224117]
+transform = Transform3D(-4.4847884e-08, 1.026, 0, 4.4847884e-08, 1.9603633e-15, -0.75, -1.026, -4.4847884e-08, -3.278354e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_afj6i")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=315963517]
+transparent_bg = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport" unique_id=2017405951]
+anchors_preset = -1
+offset_right = 456.0
+offset_bottom = 504.0
+
+[node name="Header" type="Label" parent="SubViewport/VBoxContainer" unique_id=338761877]
+layout_mode = 2
+offset_transform_position = Vector2(10, 10)
+text = "Header Text!"
+label_settings = SubResource("LabelSettings_hwv7x")
+
+[node name="Paragraph1" type="Label" parent="SubViewport/VBoxContainer" unique_id=488363230]
+custom_maximum_size = Vector2(456.115, -1)
+layout_mode = 2
+offset_transform_position = Vector2(10, 10)
+text = "This is our paragraph text. 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+label_settings = SubResource("LabelSettings_q5nnt")
+autowrap_mode = 2
+
+[node name="Subheading" type="Label" parent="SubViewport/VBoxContainer" unique_id=1486472925]
+layout_mode = 2
+text = "Subheading Text"
+label_settings = SubResource("LabelSettings_jtfgv")
+
+[node name="Paragraph2" type="Label" parent="SubViewport/VBoxContainer" unique_id=57736094]
+custom_maximum_size = Vector2(456.115, -1)
+layout_mode = 2
+offset_transform_position = Vector2(10, 10)
+text = "This is our paragraph text. 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+label_settings = SubResource("LabelSettings_q5nnt")
+autowrap_mode = 2

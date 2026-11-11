@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://cydeg88drx2x8"]
 
-[ext_resource type="Shader" uid="uid://b8mcvert70igg" path="res://shaders/highlightshader.gdshader" id="1_q7cjx"]
-[ext_resource type="Script" uid="uid://dayowdewkn7ik" path="res://scripts/HighlightVolume.cs" id="2_srjt6"]
-[ext_resource type="PackedScene" uid="uid://bq0eevv51q703" path="res://scenes/XRController.tscn" id="3_1ya85"]
+[ext_resource type="Shader" uid="uid://b8mcvert70igg" path="res://shaders/highlightshader.gdshader" id="1_wc674"]
+[ext_resource type="Script" uid="uid://dayowdewkn7ik" path="res://scripts/HighlightVolume.cs" id="2_of3nn"]
+[ext_resource type="PackedScene" uid="uid://bq0eevv51q703" path="res://scenes/XRController.tscn" id="3_fjov7"]
+[ext_resource type="PackedScene" uid="uid://6re0pt737gpr" path="res://Joy/Scenes/text_billboard.tscn" id="5_of3nn"]
+[ext_resource type="Script" uid="uid://cv8lkhaou1mab" path="res://Joy/Scripts/TextBillboard.cs" id="6_fjov7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r5aeh"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -23,7 +25,7 @@ glow_enabled = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bm73g"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("1_q7cjx")
+shader = ExtResource("1_wc674")
 shader_parameter/color = Color(1, 0, 0, 1)
 shader_parameter/size = 1.0
 
@@ -48,7 +50,23 @@ albedo_texture = SubResource("ViewportTexture_u4pi3")
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_10l6v")
 
-[node name="MichaelDebug" type="Node3D" unique_id=2004663829]
+[sub_resource type="BoxMesh" id="BoxMesh_jtfgv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hwv7x"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fjov7"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_euqoc"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_fjov7")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n0q13"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_euqoc")
+
+[node name="JoyDebug" type="Node3D" unique_id=2004663829]
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=415055716]
 size = Vector2i(1148, 415)
@@ -95,7 +113,7 @@ transform = Transform3D(3.9704275, 0, 0, 0, 0.22209531, 0, 0, 0, 1, 0, 0.541476,
 mesh = SubResource("BoxMesh_wd65j")
 
 [node name="HighlightVolume" type="Area3D" parent="MeshInstance3D2" unique_id=822356321]
-script = ExtResource("2_srjt6")
+script = ExtResource("2_of3nn")
 highlightMaterial = SubResource("StandardMaterial3D_ncmou")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/HighlightVolume" unique_id=1774335778]
@@ -109,9 +127,28 @@ mesh = SubResource("BoxMesh_wd65j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0334508, 0.541476, 0.08432031)
 mesh = SubResource("BoxMesh_wd65j")
 
-[node name="XrController" parent="." unique_id=1912324114 instance=ExtResource("3_1ya85")]
+[node name="XrController" parent="." unique_id=1912324114 instance=ExtResource("3_fjov7")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.13961792, 4.7683716e-07, 0.05796057)
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=886934291]
 transform = Transform3D(-7.153136e-08, -1, 0, -7.153136e-08, 1.9106855e-15, -1, 1.6364467, -4.371139e-08, -4.371139e-08, 1.1580305, 1.0098057, 0.03829813)
 mesh = SubResource("PlaneMesh_01xyt")
+
+[node name="Test Camera" type="Camera3D" parent="." unique_id=2116322984]
+transform = Transform3D(0.0010597892, -0.3295321, 0.9441438, 0.00036989534, 0.94414437, 0.3295319, -0.99999934, 0, 0.0011224863, -0.97396815, 1.593965, 0)
+current = true
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=852508424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.6541952, -1.7601358)
+mesh = SubResource("BoxMesh_jtfgv")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D6" unique_id=1714888343]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D6/Area3D" unique_id=50895848]
+shape = SubResource("BoxShape3D_hwv7x")
+
+[node name="TextBillboard" parent="." unique_id=521224117 instance=ExtResource("5_of3nn")]
+transform = Transform3D(-4.4847884e-08, 1.026, 0, 4.4847884e-08, 1.9603633e-15, -0.75, -1.026, -4.4847884e-08, -3.278354e-08, -4.861997, 0.75000006, 2.3986287)
+mesh = SubResource("PlaneMesh_n0q13")
+script = ExtResource("6_fjov7")
+_paragraphs = PackedStringArray("", "", "", "", "", "")
