@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://baw0rw5kikspq"]
 
-[ext_resource type="Script" uid="uid://dayowdewkn7ik" path="res://scripts/HighlightVolume.cs" id="2_bm73g"]
+[ext_resource type="Script" uid="uid://dayowdewkn7ik" path="res://scripts/HoverVolume.cs" id="2_bm73g"]
 [ext_resource type="PackedScene" uid="uid://bq0eevv51q703" path="res://scenes/XRController.tscn" id="3_bm73g"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r5aeh"]

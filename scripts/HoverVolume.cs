@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class HighlightVolume : StaticBody3D, IHighlight
+public partial class HoverVolume : StaticBody3D, IHover
 {
 	// Called when the node enters the scene tree for the first time.
 
@@ -22,7 +22,7 @@ public partial class HighlightVolume : StaticBody3D, IHighlight
 		//GD.Print("Hello?");
 	}
 
-    public void OnHighlight()
+    public void OnHover()
     {
         if(highlightShader != null)
 		{
@@ -36,16 +36,16 @@ public partial class HighlightVolume : StaticBody3D, IHighlight
 		}
 		else
 		{
-			GD.Print("Highlight shader is null!");
+			GD.Print("Hover shader is null!");
 		}
     }
 
-    public bool CanHighlight()
+    public bool CanHover()
     {
         return true;
     }
 
-    public void OffHighlight()
+    public void OffHover()
     {
         
 		if(highlightShader != null)
