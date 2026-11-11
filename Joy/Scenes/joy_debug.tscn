@@ -139,7 +139,7 @@ transform = Transform3D(0.0010597892, -0.3295321, 0.9441438, 0.00036989534, 0.94
 current = true
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=852508424]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7694168, 0.5176611, -0.49911964)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7694168, 0.5176611, -1.9366512)
 mesh = SubResource("BoxMesh_jtfgv")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D6" unique_id=929850816]
