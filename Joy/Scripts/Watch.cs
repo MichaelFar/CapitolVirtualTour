@@ -26,12 +26,12 @@ public partial class Watch : Area3D
 	{
 	}
 
-	private void _on_area_3d_body_entered(Node3D body){
+	private void _on_body_entered(Node3D body){
 		Debug.Print("Starting Timer");
 		timer.Start();
 	}
 
-	private void _on_area_3d_body_exited(Node3D body){
+	private void _on_body_exited(Node3D body){
 		Debug.Print("Stopping Timer");
 		timer.Stop();
 	}

@@ -74,6 +74,6 @@ time = NodePath("../../../Timer")
 process_callback = 0
 wait_time = 3.0
 
-[connection signal="body_entered" from="." to="Watch" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="." to="Watch" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="timeout" from="Watch/Timer" to="." method="_on_timer_timeout"]
