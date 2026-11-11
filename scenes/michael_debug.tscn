@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://baw0rw5kikspq"]
 
-[ext_resource type="Shader" uid="uid://b8mcvert70igg" path="res://shaders/highlightshader.gdshader" id="1_ncmou"]
-[ext_resource type="PackedScene" uid="uid://bq0eevv51q703" path="res://scenes/XRController.tscn" id="1_r5aeh"]
-[ext_resource type="Script" uid="uid://dayowdewkn7ik" path="res://scripts/HighlightVolume.cs" id="2_bm73g"]
+[ext_resource type="Script" uid="uid://dayowdewkn7ik" path="res://scripts/HoverVolume.cs" id="2_bm73g"]
+[ext_resource type="PackedScene" uid="uid://bq0eevv51q703" path="res://scenes/XRController.tscn" id="3_bm73g"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r5aeh"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -20,33 +19,104 @@ glow_enabled = true
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_al6tu"]
 
+[sub_resource type="Shader" id="Shader_ncmou"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode blend_mix, cull_front, unshaded;
+
+uniform vec4 color : source_color = vec4(1,0,0,1);
+uniform float size : hint_range(1.0, 1.5, 0.01) = 1.00;
+
+void vertex() {
+	VERTEX *= size;
+}
+
+void fragment() {
+	ALBEDO = color.rgb;
+	ALPHA = color.a;
+}
+"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bm73g"]
 resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("1_ncmou")
+render_priority = 1
+shader = SubResource("Shader_ncmou")
 shader_parameter/color = Color(1, 0, 0, 1)
 shader_parameter/size = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ncmou"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42c5h"]
 resource_local_to_scene = true
 next_pass = SubResource("ShaderMaterial_bm73g")
 
-[sub_resource type="BoxMesh" id="BoxMesh_wd65j"]
-material = SubResource("StandardMaterial3D_ncmou")
+[sub_resource type="BoxMesh" id="BoxMesh_ocqdx"]
+material = SubResource("StandardMaterial3D_42c5h")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_42c5h"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_u4pi3"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10l6v"]
+[sub_resource type="Shader" id="Shader_bm73g"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_u4pi3")
+code = "shader_type spatial;
+render_mode blend_mix, cull_front, unshaded;
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_01xyt"]
+uniform vec4 color : source_color = vec4(1,0,0,1);
+uniform float size : hint_range(1.0, 1.5, 0.01) = 1.00;
+
+void vertex() {
+	VERTEX *= size;
+}
+
+void fragment() {
+	ALBEDO = color.rgb;
+	ALPHA = color.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_42c5h"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_10l6v")
+render_priority = 1
+shader = SubResource("Shader_bm73g")
+shader_parameter/color = Color(0.5882353, 1, 0.2509804, 1)
+shader_parameter/size = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocqdx"]
+resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_42c5h")
+
+[sub_resource type="BoxMesh" id="BoxMesh_tksun"]
+material = SubResource("StandardMaterial3D_ocqdx")
+
+[sub_resource type="Shader" id="Shader_lh3q3"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode blend_mix, cull_front, unshaded;
+
+uniform vec4 color : source_color = vec4(1,0,0,1);
+uniform float size : hint_range(1.0, 1.5, 0.01) = 1.00;
+
+void vertex() {
+	VERTEX *= size;
+}
+
+void fragment() {
+	ALBEDO = color.rgb;
+	ALPHA = color.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6cvb5"]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource("Shader_lh3q3")
+shader_parameter/color = Color(0.5882353, 0, 1, 1)
+shader_parameter/size = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qssnw"]
+resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_6cvb5")
+
+[sub_resource type="BoxMesh" id="BoxMesh_hjgwc"]
+material = SubResource("StandardMaterial3D_qssnw")
 
 [node name="MichaelDebug" type="Node3D" unique_id=2004663829]
 
@@ -90,31 +160,38 @@ mesh = SubResource("PlaneMesh_wd65j")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1299692092]
 shape = SubResource("WorldBoundaryShape3D_al6tu")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1322266762]
-transform = Transform3D(3.9704275, 0, 0, 0, 0.22209531, 0, 0, 0, 1, 0, 0.541476, 1.5933745)
-mesh = SubResource("BoxMesh_wd65j")
+[node name="TestHighlightObject" type="MeshInstance3D" parent="." unique_id=1322266762]
+transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -0.53750193, 0.5414758, 0.63152754)
+mesh = SubResource("BoxMesh_ocqdx")
 
-[node name="HighlightVolume" type="Area3D" parent="MeshInstance3D2" unique_id=822356321]
+[node name="HighlightVolume" type="StaticBody3D" parent="TestHighlightObject" unique_id=331088396 node_paths=PackedStringArray("highlightMeshNode")]
 script = ExtResource("2_bm73g")
-highlightMaterial = SubResource("StandardMaterial3D_ncmou")
+highlightMeshNode = NodePath("..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/HighlightVolume" unique_id=1774335778]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestHighlightObject/HighlightVolume" unique_id=1774335778]
 shape = SubResource("ConcavePolygonShape3D_42c5h")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1349121190]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.541476, -1.9631681)
-mesh = SubResource("BoxMesh_wd65j")
+[node name="TestHighlightObject2" type="MeshInstance3D" parent="." unique_id=1580706067]
+transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -0.53750193, 1.1236558, -0.34746945)
+mesh = SubResource("BoxMesh_tksun")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1565591033]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0334508, 0.541476, 0.08432031)
-mesh = SubResource("BoxMesh_wd65j")
+[node name="HighlightVolume" type="StaticBody3D" parent="TestHighlightObject2" unique_id=1593175194 node_paths=PackedStringArray("highlightMeshNode")]
+script = ExtResource("2_bm73g")
+highlightMeshNode = NodePath("..")
 
-[node name="XrController" parent="." unique_id=1912324114 instance=ExtResource("1_r5aeh")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.13961792, 4.7683716e-07, 0.05796057)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestHighlightObject2/HighlightVolume" unique_id=2018398510]
+shape = SubResource("ConcavePolygonShape3D_42c5h")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=886934291]
-transform = Transform3D(-7.153136e-08, -1, 0, -7.153136e-08, 1.9106855e-15, -1, 1.6364467, -4.371139e-08, -4.371139e-08, 1.1580305, 1.0098057, 0.03829813)
-mesh = SubResource("PlaneMesh_01xyt")
+[node name="TestHighlightObject3" type="MeshInstance3D" parent="." unique_id=1246164636]
+transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -0.53750193, 0.5414758, -1.6454704)
+mesh = SubResource("BoxMesh_hjgwc")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=300794317]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1748143, 0)
+[node name="HighlightVolume" type="StaticBody3D" parent="TestHighlightObject3" unique_id=1460376696 node_paths=PackedStringArray("highlightMeshNode")]
+script = ExtResource("2_bm73g")
+highlightMeshNode = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestHighlightObject3/HighlightVolume" unique_id=1809472451]
+shape = SubResource("ConcavePolygonShape3D_42c5h")
+
+[node name="XrController" parent="." unique_id=1912324114 instance=ExtResource("3_bm73g")]
+transform = Transform3D(3.059797e-07, 0, 1, 0, 1, 0, -1, 0, 3.059797e-07, -1.0890188, 0, -0.28029597)

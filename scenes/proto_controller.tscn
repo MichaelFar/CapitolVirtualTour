@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bs72ogkvdd7d6"]
 
 [ext_resource type="Script" uid="uid://cydm7x8wwhenx" path="res://scenes/ProtoController.cs" id="1_qhypi"]
-[ext_resource type="Script" uid="uid://bisd4fc722j65" path="res://scripts/HighlightChecker.cs" id="2_rji43"]
+[ext_resource type="Script" uid="uid://bisd4fc722j65" path="res://scripts/HoverChecker.cs" id="2_rji43"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
 albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
