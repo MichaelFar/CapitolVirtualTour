@@ -10,7 +10,7 @@ public partial class XrControllerRoot : Node3D
         if(_xrInterface != null && _xrInterface.IsInitialized())
         {
             GD.Print("OpenXR initialized successfully");
-
+            
             // Turn off v-sync!
             DisplayServer.WindowSetVsyncMode(DisplayServer.VSyncMode.Disabled);
 
