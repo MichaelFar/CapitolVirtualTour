@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://bsoicnjfdmoyt"]
+
+[ext_resource type="FontFile" uid="uid://dsd4ev6vashv2" path="res://Joy/Fonts/RedditSansCondensed-VariableFont_wght.ttf" id="1_uc15t"]
+
+[resource]
+font = ExtResource("1_uc15t")
+font_size = 17
+font_color = Color(0, 0, 0, 1)

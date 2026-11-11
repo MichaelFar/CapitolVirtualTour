@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://bvm2evfsyg48m"]
+
+[ext_resource type="FontFile" uid="uid://de3jwkcdo7v1f" path="res://Joy/Fonts/FrankRuhlLibre-VariableFont_wght.ttf" id="1_iadkj"]
+
+[resource]
+font = ExtResource("1_iadkj")
+font_size = 35
+font_color = Color(0, 0, 0, 1)

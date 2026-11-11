@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://6re0pt737gpr"]
 
 [ext_resource type="Script" uid="uid://cv8lkhaou1mab" path="res://Joy/Scripts/TextBillboard.cs" id="1_4h7vy"]
+[ext_resource type="LabelSettings" uid="uid://bsoicnjfdmoyt" path="res://Joy/Fonts/Paragraph.tres" id="2_15wcp"]
+[ext_resource type="LabelSettings" uid="uid://bvm2evfsyg48m" path="res://Joy/Fonts/Header.tres" id="3_tf4tb"]
+[ext_resource type="LabelSettings" uid="uid://cyhcoy0mrlxu2" path="res://Joy/Fonts/Subheading.tres" id="4_b1130"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_15wcp"]
 viewport_path = NodePath("SubViewport")
@@ -14,10 +17,12 @@ albedo_texture = SubResource("ViewportTexture_15wcp")
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_4h7vy")
 
-[node name="TextBillboard" type="MeshInstance3D" unique_id=521224117]
+[node name="TextBillboard" type="MeshInstance3D" unique_id=521224117 node_paths=PackedStringArray("vbox")]
 transform = Transform3D(-4.4847884e-08, 1.026, 0, 4.4847884e-08, 1.9603633e-15, -0.75, -1.026, -4.4847884e-08, -3.278354e-08, 0, 0, 0)
 mesh = SubResource("PlaneMesh_afj6i")
 script = ExtResource("1_4h7vy")
+vbox = NodePath("SubViewport/VBoxContainer")
+labelSet = Array[LabelSettings]([ExtResource("2_15wcp"), ExtResource("3_tf4tb"), ExtResource("4_b1130")])
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=315963517]
 transparent_bg = true

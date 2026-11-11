@@ -8,17 +8,17 @@
 background_mode = 1
 background_color = Color(0, 0.58759296, 0.20475444, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7q8vw"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_diwyu"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_83nrj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7q8vw"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = SubResource("ViewportTexture_7q8vw")
+albedo_texture = SubResource("ViewportTexture_diwyu")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_mhlsr"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_83nrj"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_83nrj")
+material = SubResource("StandardMaterial3D_7q8vw")
 
 [node name="Greenworld" type="Node3D" unique_id=770808432]
 
@@ -36,4 +36,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5572038, 0)
 
 [node name="TextBillboard" parent="." unique_id=521224117 instance=ExtResource("1_diwyu")]
 transform = Transform3D(1.0259054, -0.013928533, 3.2780516e-08, 4.4847877e-08, 1.0834257e-15, -0.7499999, 0.013928533, 1.0259054, 4.4505466e-10, 0.022871345, 0.55901575, -1.0037135)
-mesh = SubResource("PlaneMesh_mhlsr")
+mesh = SubResource("PlaneMesh_83nrj")
+paragraphs = PackedStringArray("Welcome to Green World", "This is when the capitol was green!")
