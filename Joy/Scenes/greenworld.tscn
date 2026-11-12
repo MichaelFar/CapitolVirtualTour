@@ -37,4 +37,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5572038, 0)
 [node name="TextBillboard" parent="." unique_id=521224117 instance=ExtResource("1_diwyu")]
 transform = Transform3D(1.0259054, -0.013928533, 3.2780516e-08, 4.4847877e-08, 1.0834257e-15, -0.7499999, 0.013928533, 1.0259054, 4.4505466e-10, 0.022871345, 0.55901575, -1.0037135)
 mesh = SubResource("PlaneMesh_83nrj")
-paragraphs = PackedStringArray("Welcome to Green World", "This is when the capitol was green!")
+title = "Welcome to GreenWorld"
+paragraphs = PackedStringArray("This is when the capitol was green!")

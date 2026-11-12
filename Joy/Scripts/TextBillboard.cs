@@ -4,6 +4,9 @@ public partial class TextBillboard : MeshInstance3D
 {
 
 	[Export]
+	private string title;
+
+	[Export]
 	private string[] paragraphs;
 
 	[Export]
@@ -12,9 +15,15 @@ public partial class TextBillboard : MeshInstance3D
 	[Export]
 	private LabelSettings[] labelSet;
 
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		Label titleLabel = new Label();
+		titleLabel.Text = title;
+		titleLabel.LabelSettings = labelSet[1];
+		vbox.AddChild(titleLabel);
+
 		foreach(string lines in paragraphs){
 			Label newLabel = new Label();
 			newLabel.Text = lines;

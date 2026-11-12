@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cydeg88drx2x8"]
 
 [ext_resource type="Shader" uid="uid://b8mcvert70igg" path="res://shaders/highlightshader.gdshader" id="1_wc674"]
-[ext_resource type="Script" path="res://scripts/HighlightVolume.cs" id="2_of3nn"]
 [ext_resource type="PackedScene" uid="uid://bq0eevv51q703" path="res://scenes/XRController.tscn" id="3_fjov7"]
 [ext_resource type="PackedScene" uid="uid://6re0pt737gpr" path="res://Joy/Scenes/text_billboard.tscn" id="5_of3nn"]
 [ext_resource type="PackedScene" uid="uid://bsgbi87xwr6g0" path="res://Joy/Scenes/Watch.tscn" id="7_euqoc"]
@@ -54,17 +53,17 @@ material = SubResource("StandardMaterial3D_10l6v")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hwv7x"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_of3nn"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_wc674"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fjov7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_of3nn"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = SubResource("ViewportTexture_of3nn")
+albedo_texture = SubResource("ViewportTexture_wc674")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_euqoc"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_fjov7"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_fjov7")
+material = SubResource("StandardMaterial3D_of3nn")
 
 [node name="JoyDebug" type="Node3D" unique_id=2004663829]
 
@@ -113,8 +112,6 @@ transform = Transform3D(3.9704275, 0, 0, 0, 0.22209531, 0, 0, 0, 1, 0, 0.541476,
 mesh = SubResource("BoxMesh_wd65j")
 
 [node name="HighlightVolume" type="Area3D" parent="MeshInstance3D2" unique_id=822356321]
-script = ExtResource("2_of3nn")
-highlightMaterial = SubResource("StandardMaterial3D_ncmou")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/HighlightVolume" unique_id=1774335778]
 shape = SubResource("ConcavePolygonShape3D_42c5h")
@@ -151,7 +148,9 @@ shape = SubResource("BoxShape3D_hwv7x")
 
 [node name="TextBillboard" parent="." unique_id=521224117 instance=ExtResource("5_of3nn")]
 transform = Transform3D(-4.4847884e-08, 1.026, 0, 4.4847884e-08, 1.9603633e-15, -0.75, -1.026, -4.4847884e-08, -3.278354e-08, -4.861997, 0.75000006, 2.3986287)
-mesh = SubResource("PlaneMesh_euqoc")
+mesh = SubResource("PlaneMesh_fjov7")
+title = "This is an example"
+paragraphs = PackedStringArray("Wow text is on this billboard sprite. This is so cool!")
 
 [node name="Watch" parent="." unique_id=368534118 instance=ExtResource("7_euqoc")]
 transform = Transform3D(0.8027834, 0, 0.5962707, 0, 1, 0, -0.5962707, 0, 0.8027834, -3.4938352, 0.5000001, -2.4285247)
