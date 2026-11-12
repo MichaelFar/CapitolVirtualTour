@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://baw0rw5kikspq"]
 
+[ext_resource type="PackedScene" uid="uid://6re0pt737gpr" path="res://Joy/Scenes/text_billboard.tscn" id="2_42c5h"]
 [ext_resource type="Script" uid="uid://dayowdewkn7ik" path="res://scripts/HoverVolume.cs" id="2_bm73g"]
 [ext_resource type="PackedScene" uid="uid://bq0eevv51q703" path="res://scenes/XRController.tscn" id="3_bm73g"]
 
@@ -118,6 +119,18 @@ next_pass = SubResource("ShaderMaterial_6cvb5")
 [sub_resource type="BoxMesh" id="BoxMesh_hjgwc"]
 material = SubResource("StandardMaterial3D_qssnw")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_bm73g"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tksun"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_bm73g")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lh3q3"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_tksun")
+
 [node name="MichaelDebug" type="Node3D" unique_id=2004663829]
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=415055716]
@@ -161,7 +174,7 @@ mesh = SubResource("PlaneMesh_wd65j")
 shape = SubResource("WorldBoundaryShape3D_al6tu")
 
 [node name="TestHighlightObject" type="MeshInstance3D" parent="." unique_id=1322266762]
-transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -0.53750193, 0.5414758, 0.63152754)
+transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -1.179859, 0.5414758, 1.0825357)
 mesh = SubResource("BoxMesh_ocqdx")
 
 [node name="HighlightVolume" type="StaticBody3D" parent="TestHighlightObject" unique_id=331088396 node_paths=PackedStringArray("highlightMeshNode")]
@@ -172,7 +185,7 @@ highlightMeshNode = NodePath("..")
 shape = SubResource("ConcavePolygonShape3D_42c5h")
 
 [node name="TestHighlightObject2" type="MeshInstance3D" parent="." unique_id=1580706067]
-transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -0.53750193, 1.1236558, -0.34746945)
+transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -0.53750193, 0.54914236, -0.34746945)
 mesh = SubResource("BoxMesh_tksun")
 
 [node name="HighlightVolume" type="StaticBody3D" parent="TestHighlightObject2" unique_id=1593175194 node_paths=PackedStringArray("highlightMeshNode")]
@@ -183,7 +196,7 @@ highlightMeshNode = NodePath("..")
 shape = SubResource("ConcavePolygonShape3D_42c5h")
 
 [node name="TestHighlightObject3" type="MeshInstance3D" parent="." unique_id=1246164636]
-transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -0.53750193, 0.5414758, -1.6454704)
+transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -1.2978841, 0.5414758, -1.6454704)
 mesh = SubResource("BoxMesh_hjgwc")
 
 [node name="HighlightVolume" type="StaticBody3D" parent="TestHighlightObject3" unique_id=1460376696 node_paths=PackedStringArray("highlightMeshNode")]
@@ -193,5 +206,46 @@ highlightMeshNode = NodePath("..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestHighlightObject3/HighlightVolume" unique_id=1809472451]
 shape = SubResource("ConcavePolygonShape3D_42c5h")
 
+[node name="TestHighlightObject4" type="MeshInstance3D" parent="." unique_id=1903353188]
+transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -3.8953118, 0.5414758, 0.63152754)
+mesh = SubResource("BoxMesh_ocqdx")
+
+[node name="HighlightVolume" type="StaticBody3D" parent="TestHighlightObject4" unique_id=810370916 node_paths=PackedStringArray("highlightMeshNode")]
+script = ExtResource("2_bm73g")
+highlightMeshNode = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestHighlightObject4/HighlightVolume" unique_id=1016177502]
+shape = SubResource("ConcavePolygonShape3D_42c5h")
+
+[node name="TestHighlightObject5" type="MeshInstance3D" parent="." unique_id=939450166]
+transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -3.8953118, 1.1236558, -0.34746945)
+mesh = SubResource("BoxMesh_tksun")
+
+[node name="HighlightVolume" type="StaticBody3D" parent="TestHighlightObject5" unique_id=1735360466 node_paths=PackedStringArray("highlightMeshNode")]
+script = ExtResource("2_bm73g")
+highlightMeshNode = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestHighlightObject5/HighlightVolume" unique_id=1280096240]
+shape = SubResource("ConcavePolygonShape3D_42c5h")
+
+[node name="TestHighlightObject6" type="MeshInstance3D" parent="." unique_id=1458001661]
+transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -3.8953118, 0.5414758, -1.6454704)
+mesh = SubResource("BoxMesh_hjgwc")
+
+[node name="HighlightVolume" type="StaticBody3D" parent="TestHighlightObject6" unique_id=232862694 node_paths=PackedStringArray("highlightMeshNode")]
+script = ExtResource("2_bm73g")
+highlightMeshNode = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestHighlightObject6/HighlightVolume" unique_id=279412637]
+shape = SubResource("ConcavePolygonShape3D_42c5h")
+
 [node name="XrController" parent="." unique_id=1912324114 instance=ExtResource("3_bm73g")]
 transform = Transform3D(3.059797e-07, 0, 1, 0, 1, 0, -1, 0, 3.059797e-07, -1.0890188, 0, -0.28029597)
+
+[node name="TextBillboard" parent="." unique_id=521224117 instance=ExtResource("2_42c5h")]
+transform = Transform3D(1.3454365e-07, -1.026, 2.8660285e-15, 4.4847884e-08, 1.960363e-15, -0.75, 1.026, 1.3454365e-07, 3.2783543e-08, -0.1376524, 0.84375596, 0.13823164)
+mesh = SubResource("PlaneMesh_lh3q3")
+title = "title"
+paragraphs = PackedStringArray("test paragraph 1", "test paragraph 2")
+
+[editable path="TextBillboard"]

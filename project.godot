@@ -11,12 +11,15 @@ config_version=5
 [application]
 
 config/name="CapitolVirtualTour"
-run/main_scene="uid://cydeg88drx2x8"
+run/main_scene="uid://baw0rw5kikspq"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=3664
+window/size/viewport_height=1920
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

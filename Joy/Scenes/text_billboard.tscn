@@ -21,6 +21,8 @@ material = SubResource("StandardMaterial3D_4h7vy")
 transform = Transform3D(-4.4847884e-08, 1.026, 0, 4.4847884e-08, 1.9603633e-15, -0.75, -1.026, -4.4847884e-08, -3.278354e-08, 0, 0, 0)
 mesh = SubResource("PlaneMesh_afj6i")
 script = ExtResource("1_4h7vy")
+title = "test"
+paragraphs = PackedStringArray("paragraph 1", "paragraph 2")
 vbox = NodePath("SubViewport/VBoxContainer")
 labelSet = Array[LabelSettings]([ExtResource("2_15wcp"), ExtResource("3_tf4tb"), ExtResource("4_b1130")])
 

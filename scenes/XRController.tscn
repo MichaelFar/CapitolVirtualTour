@@ -2,11 +2,15 @@
 
 [ext_resource type="Script" uid="uid://mxg51uib6a3d" path="res://XrControllerRoot.cs" id="1_hf2p5"]
 [ext_resource type="Script" uid="uid://bisd4fc722j65" path="res://scripts/HoverChecker.cs" id="2_bwg4x"]
+[ext_resource type="PackedScene" uid="uid://bsgbi87xwr6g0" path="res://Joy/Scenes/Watch.tscn" id="2_u4pi3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_al6tu"]
 size = Vector3(0.1, 0.1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bwg4x"]
+size = Vector3(0.1, 0.1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u4pi3"]
 size = Vector3(0.1, 0.1, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_g761s"]
@@ -35,8 +39,12 @@ script = ExtResource("1_hf2p5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
 tracker = &"left_hand"
 
+[node name="Area3D" parent="XROrigin3D/LeftHand" unique_id=673361655 instance=ExtResource("2_u4pi3")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.12612712, -0.0647316)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftHand" unique_id=371954073]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5307808)
+visible = false
 mesh = SubResource("BoxMesh_al6tu")
 
 [node name="Marker3D" type="Marker3D" parent="XROrigin3D/LeftHand" unique_id=540239332]
@@ -61,11 +69,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0023279, -0.5163512)
 shape = SubResource("BoxShape3D_bwg4x")
 script = ExtResource("2_bwg4x")
 
+[node name="PlaceholderHandBodyForWatch" type="StaticBody3D" parent="XROrigin3D/RightHand" unique_id=2075964418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.56206894)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/RightHand/PlaceholderHandBodyForWatch" unique_id=361729459]
+shape = SubResource("BoxShape3D_u4pi3")
+
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=2010420355]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="UIPlane" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" unique_id=298072856]
 transform = Transform3D(0.6488742, 0, 0, 0, -4.371139e-08, -0.39201087, 0, 1, -1.7135338e-08, 0, 0.03519249, -0.55170953)
+visible = false
 mesh = SubResource("PlaneMesh_hwv7x")
 
 [node name="SubViewport" type="SubViewport" parent="XROrigin3D/XRCamera3D/UIPlane" unique_id=234276114]

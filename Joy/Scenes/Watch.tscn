@@ -32,6 +32,7 @@ font_size = 35
 script = ExtResource("1_oq1d7")
 timer = NodePath("Watch/Timer")
 indicator = NodePath("Watch/UI/SubViewport/ProgressBar")
+nextScene = "res://Joy/Scenes/greenworld.tscn"
 
 [node name="Collider" type="CollisionShape3D" parent="." unique_id=758585780]
 shape = SubResource("BoxShape3D_hwv7x")
