@@ -18,15 +18,17 @@ viewport_path = NodePath("Watch/UI/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06iqs"]
 resource_local_to_scene = true
+transparency = 1
 albedo_texture = SubResource("ViewportTexture_mkk30")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3sxrw"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_06iqs")
+size = Vector2(4, 3.46)
 
-[sub_resource type="LabelSettings" id="LabelSettings_3avop"]
+[sub_resource type="LabelSettings" id="LabelSettings_5am2x"]
 font = ExtResource("2_3avop")
-font_size = 35
+font_size = 70
 
 [node name="Area3D" type="Area3D" unique_id=673361655 node_paths=PackedStringArray("timer", "indicator")]
 script = ExtResource("1_oq1d7")
@@ -45,7 +47,8 @@ transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-
 mesh = SubResource("PlaneMesh_3sxrw")
 
 [node name="SubViewport" type="SubViewport" parent="Watch/UI" unique_id=393747567]
-size = Vector2i(567, 516)
+transparent_bg = true
+size = Vector2i(788, 516)
 
 [node name="Label" type="Label" parent="Watch/UI/SubViewport" unique_id=1526925930]
 anchors_preset = -1
@@ -53,9 +56,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 64
 text = "Hold hand on the watch to
 go to the next area."
-label_settings = SubResource("LabelSettings_3avop")
+label_settings = SubResource("LabelSettings_5am2x")
 horizontal_alignment = 1
 vertical_alignment = 1
 
