@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://rcadc3d888gg"]
+
+[ext_resource type="Script" uid="uid://bpf28vdl1yp3e" path="res://scripts/Pickup.cs" id="1_3uk5r"]
+[ext_resource type="Script" uid="uid://dayowdewkn7ik" path="res://scripts/HoverVolume.cs" id="2_qts3x"]
+
+[sub_resource type="Shader" id="Shader_42c5h"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode blend_mix, cull_front, unshaded;
+
+uniform vec4 color : source_color = vec4(1,0,0,1);
+uniform float size : hint_range(1.0, 1.5, 0.01) = 1.00;
+
+void vertex() {
+	VERTEX *= size;
+}
+
+void fragment() {
+	ALBEDO = color.rgb;
+	ALPHA = color.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ocqdx"]
+resource_local_to_scene = true
+render_priority = 1
+shader = SubResource("Shader_42c5h")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/size = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lh3q3"]
+resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_ocqdx")
+
+[sub_resource type="BoxMesh" id="BoxMesh_3uhrl"]
+material = SubResource("StandardMaterial3D_lh3q3")
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wd65j"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_al6tu"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="BasePickupObject" type="RigidBody3D" unique_id=380460483]
+script = ExtResource("1_3uk5r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=58586832]
+mesh = SubResource("BoxMesh_3uhrl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=319785026]
+shape = SubResource("BoxShape3D_wd65j")
+
+[node name="HighlightVolume" type="Area3D" parent="." unique_id=347196961 node_paths=PackedStringArray("highlightMeshNode")]
+collision_layer = 2
+script = ExtResource("2_qts3x")
+highlightMeshNode = NodePath("../MeshInstance3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HighlightVolume" unique_id=1176088458]
+shape = SubResource("BoxShape3D_al6tu")
+
+[connection signal="PickedUpStateChanged" from="." to="HighlightVolume" method="SetCanHover"]

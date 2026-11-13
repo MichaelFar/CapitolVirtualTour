@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://baw0rw5kikspq"]
 
+[ext_resource type="PackedScene" uid="uid://rcadc3d888gg" path="res://scenes/base_pickup_object.tscn" id="1_42c5h"]
 [ext_resource type="PackedScene" uid="uid://6re0pt737gpr" path="res://Joy/Scenes/text_billboard.tscn" id="2_42c5h"]
 [ext_resource type="Script" uid="uid://dayowdewkn7ik" path="res://scripts/HoverVolume.cs" id="2_bm73g"]
 [ext_resource type="PackedScene" uid="uid://bq0eevv51q703" path="res://scenes/XRController.tscn" id="3_bm73g"]
@@ -119,8 +120,20 @@ next_pass = SubResource("ShaderMaterial_6cvb5")
 [sub_resource type="BoxMesh" id="BoxMesh_hjgwc"]
 material = SubResource("StandardMaterial3D_qssnw")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_6cvb5"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ocqdx"]
 viewport_path = NodePath("XROrigin3D/XRCamera3D/UIPlane/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tksun"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_ocqdx")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lh3q3"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_tksun")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6cvb5"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hjgwc"]
 resource_local_to_scene = true
@@ -131,49 +144,25 @@ albedo_texture = SubResource("ViewportTexture_6cvb5")
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_hjgwc")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_acfxo"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvbg3"]
-resource_local_to_scene = true
-transparency = 1
-albedo_texture = SubResource("ViewportTexture_acfxo")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_f4sij"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_hvbg3")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_huwki"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_al6tu"]
 material = SubResource("StandardMaterial3D_huwki")
 size = Vector3(0.6196289, 1, 1)
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bm73g"]
+data = PackedVector3Array(-0.3098, 0.5, 0.5, 0.3098, 0.5, 0.5, -0.3098, -0.5, 0.5, 0.3098, 0.5, 0.5, 0.3098, -0.5, 0.5, -0.3098, -0.5, 0.5, 0.3098, 0.5, -0.5, -0.3098, 0.5, -0.5, 0.3098, -0.5, -0.5, -0.3098, 0.5, -0.5, -0.3098, -0.5, -0.5, 0.3098, -0.5, -0.5, 0.3098, 0.5, 0.5, 0.3098, 0.5, -0.5, 0.3098, -0.5, 0.5, 0.3098, 0.5, -0.5, 0.3098, -0.5, -0.5, 0.3098, -0.5, 0.5, -0.3098, 0.5, -0.5, -0.3098, 0.5, 0.5, -0.3098, -0.5, -0.5, -0.3098, 0.5, 0.5, -0.3098, -0.5, 0.5, -0.3098, -0.5, -0.5, 0.3098, 0.5, 0.5, -0.3098, 0.5, 0.5, 0.3098, 0.5, -0.5, -0.3098, 0.5, 0.5, -0.3098, 0.5, -0.5, 0.3098, 0.5, -0.5, -0.3098, -0.5, 0.5, 0.3098, -0.5, 0.5, -0.3098, -0.5, -0.5, 0.3098, -0.5, 0.5, 0.3098, -0.5, -0.5, -0.3098, -0.5, -0.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ocqdx"]
+data = PackedVector3Array(-0.3098, 0.5, 0.5, 0.3098, 0.5, 0.5, -0.3098, -0.5, 0.5, 0.3098, 0.5, 0.5, 0.3098, -0.5, 0.5, -0.3098, -0.5, 0.5, 0.3098, 0.5, -0.5, -0.3098, 0.5, -0.5, 0.3098, -0.5, -0.5, -0.3098, 0.5, -0.5, -0.3098, -0.5, -0.5, 0.3098, -0.5, -0.5, 0.3098, 0.5, 0.5, 0.3098, 0.5, -0.5, 0.3098, -0.5, 0.5, 0.3098, 0.5, -0.5, 0.3098, -0.5, -0.5, 0.3098, -0.5, 0.5, -0.3098, 0.5, -0.5, -0.3098, 0.5, 0.5, -0.3098, -0.5, -0.5, -0.3098, 0.5, 0.5, -0.3098, -0.5, 0.5, -0.3098, -0.5, -0.5, 0.3098, 0.5, 0.5, -0.3098, 0.5, 0.5, 0.3098, 0.5, -0.5, -0.3098, 0.5, 0.5, -0.3098, 0.5, -0.5, 0.3098, 0.5, -0.5, -0.3098, -0.5, 0.5, 0.3098, -0.5, 0.5, -0.3098, -0.5, -0.5, 0.3098, -0.5, 0.5, 0.3098, -0.5, -0.5, -0.3098, -0.5, -0.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tksun"]
+data = PackedVector3Array(-0.3098, 0.5, 0.5, 0.3098, 0.5, 0.5, -0.3098, -0.5, 0.5, 0.3098, 0.5, 0.5, 0.3098, -0.5, 0.5, -0.3098, -0.5, 0.5, 0.3098, 0.5, -0.5, -0.3098, 0.5, -0.5, 0.3098, -0.5, -0.5, -0.3098, 0.5, -0.5, -0.3098, -0.5, -0.5, 0.3098, -0.5, -0.5, 0.3098, 0.5, 0.5, 0.3098, 0.5, -0.5, 0.3098, -0.5, 0.5, 0.3098, 0.5, -0.5, 0.3098, -0.5, -0.5, 0.3098, -0.5, 0.5, -0.3098, 0.5, -0.5, -0.3098, 0.5, 0.5, -0.3098, -0.5, -0.5, -0.3098, 0.5, 0.5, -0.3098, -0.5, 0.5, -0.3098, -0.5, -0.5, 0.3098, 0.5, 0.5, -0.3098, 0.5, 0.5, 0.3098, 0.5, -0.5, -0.3098, 0.5, 0.5, -0.3098, 0.5, -0.5, 0.3098, 0.5, -0.5, -0.3098, -0.5, 0.5, 0.3098, -0.5, 0.5, -0.3098, -0.5, -0.5, 0.3098, -0.5, 0.5, 0.3098, -0.5, -0.5, -0.3098, -0.5, -0.5)
+
 [node name="MichaelDebug" type="Node3D" unique_id=2004663829]
 
-[node name="SubViewport" type="SubViewport" parent="." unique_id=415055716]
-size = Vector2i(1148, 415)
-
-[node name="Label" type="Label" parent="SubViewport" unique_id=1619200111]
-modulate = Color(1, 0.27058825, 1, 1)
-self_modulate = Color(1, 0.1254902, 1, 1)
-top_level = true
-z_as_relative = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -402.0
-offset_top = -85.0
-offset_right = 315.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 169
-text = "Hello World!"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="BasePickupObject" parent="." unique_id=380460483 instance=ExtResource("1_42c5h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47230303, 1.4241625, 0.72377574)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=374733017]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -195,7 +184,8 @@ shape = SubResource("WorldBoundaryShape3D_al6tu")
 transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -1.179859, 0.5414758, 1.0825357)
 mesh = SubResource("BoxMesh_ocqdx")
 
-[node name="HighlightVolume" type="StaticBody3D" parent="TestHighlightObject" unique_id=331088396 node_paths=PackedStringArray("highlightMeshNode")]
+[node name="HighlightVolume" type="Area3D" parent="TestHighlightObject" unique_id=196555197 node_paths=PackedStringArray("highlightMeshNode")]
+collision_layer = 2
 script = ExtResource("2_bm73g")
 highlightMeshNode = NodePath("..")
 
@@ -206,7 +196,8 @@ shape = SubResource("ConcavePolygonShape3D_42c5h")
 transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -0.53750193, 0.54914236, -0.34746945)
 mesh = SubResource("BoxMesh_tksun")
 
-[node name="HighlightVolume" type="StaticBody3D" parent="TestHighlightObject2" unique_id=1593175194 node_paths=PackedStringArray("highlightMeshNode")]
+[node name="HighlightVolume" type="Area3D" parent="TestHighlightObject2" unique_id=449418436 node_paths=PackedStringArray("highlightMeshNode")]
+collision_layer = 2
 script = ExtResource("2_bm73g")
 highlightMeshNode = NodePath("..")
 
@@ -217,7 +208,8 @@ shape = SubResource("ConcavePolygonShape3D_42c5h")
 transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -1.2978841, 0.5414758, -1.6454704)
 mesh = SubResource("BoxMesh_hjgwc")
 
-[node name="HighlightVolume" type="StaticBody3D" parent="TestHighlightObject3" unique_id=1460376696 node_paths=PackedStringArray("highlightMeshNode")]
+[node name="HighlightVolume" type="Area3D" parent="TestHighlightObject3" unique_id=2004966094 node_paths=PackedStringArray("highlightMeshNode")]
+collision_layer = 2
 script = ExtResource("2_bm73g")
 highlightMeshNode = NodePath("..")
 
@@ -228,7 +220,8 @@ shape = SubResource("ConcavePolygonShape3D_42c5h")
 transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -3.8953118, 0.5414758, 0.63152754)
 mesh = SubResource("BoxMesh_ocqdx")
 
-[node name="HighlightVolume" type="StaticBody3D" parent="TestHighlightObject4" unique_id=810370916 node_paths=PackedStringArray("highlightMeshNode")]
+[node name="HighlightVolume" type="Area3D" parent="TestHighlightObject4" unique_id=1542027310 node_paths=PackedStringArray("highlightMeshNode")]
+collision_layer = 2
 script = ExtResource("2_bm73g")
 highlightMeshNode = NodePath("..")
 
@@ -239,7 +232,8 @@ shape = SubResource("ConcavePolygonShape3D_42c5h")
 transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -3.8953118, 1.1236558, -0.34746945)
 mesh = SubResource("BoxMesh_tksun")
 
-[node name="HighlightVolume" type="StaticBody3D" parent="TestHighlightObject5" unique_id=1735360466 node_paths=PackedStringArray("highlightMeshNode")]
+[node name="HighlightVolume" type="Area3D" parent="TestHighlightObject5" unique_id=751329145 node_paths=PackedStringArray("highlightMeshNode")]
+collision_layer = 2
 script = ExtResource("2_bm73g")
 highlightMeshNode = NodePath("..")
 
@@ -250,7 +244,8 @@ shape = SubResource("ConcavePolygonShape3D_42c5h")
 transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -3.8953118, 0.5414758, -1.6454704)
 mesh = SubResource("BoxMesh_hjgwc")
 
-[node name="HighlightVolume" type="StaticBody3D" parent="TestHighlightObject6" unique_id=232862694 node_paths=PackedStringArray("highlightMeshNode")]
+[node name="HighlightVolume" type="Area3D" parent="TestHighlightObject6" unique_id=1540147071 node_paths=PackedStringArray("highlightMeshNode")]
+collision_layer = 2
 script = ExtResource("2_bm73g")
 highlightMeshNode = NodePath("..")
 
@@ -261,25 +256,40 @@ shape = SubResource("ConcavePolygonShape3D_42c5h")
 transform = Transform3D(3.059797e-07, 0, 1, 0, 1, 0, -1, 0, 3.059797e-07, -1.0890188, 0, -0.28029597)
 
 [node name="UIPlane" parent="XrController/XROrigin3D/XRCamera3D" parent_id_path=PackedInt32Array(1912324114, 2010420355) index="0" unique_id=298072856]
-mesh = SubResource("PlaneMesh_b13hh")
+mesh = SubResource("PlaneMesh_lh3q3")
 
 [node name="TextBillboard" parent="." unique_id=521224117 instance=ExtResource("2_42c5h")]
 transform = Transform3D(1.3454365e-07, -1.026, 2.8660285e-15, 4.4847884e-08, 1.960363e-15, -0.75, 1.026, 1.3454365e-07, 3.2783543e-08, -0.1376524, 0.84375596, 0.13823164)
-mesh = SubResource("PlaneMesh_f4sij")
+mesh = SubResource("PlaneMesh_b13hh")
 title = "title"
 paragraphs = PackedStringArray("test paragraph 1", "test paragraph 2")
 
-[node name="Table" type="MeshInstance3D" parent="." unique_id=889905684]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.6353366, -0.37284803, -0.13505566, -0.24005985)
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=467343002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37284803, -0.13505566, -0.24005985)
+
+[node name="Table" type="MeshInstance3D" parent="StaticBody3D2" unique_id=889905684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.6353366, 0, 0, 0)
 mesh = SubResource("BoxMesh_al6tu")
 
-[node name="Table2" type="MeshInstance3D" parent="." unique_id=162602322]
-transform = Transform3D(-4.371139e-08, 0, -2.6353366, 0, 1, 0, 1, 0, -1.15194226e-07, -1.4779103, -0.13505566, -1.6390424)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1648228721]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.6353366, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_bm73g")
+
+[node name="Table2" type="MeshInstance3D" parent="StaticBody3D2" unique_id=162602322]
+transform = Transform3D(-4.371139e-08, 0, -2.6353366, 0, 1, 0, 1, 0, -1.15194226e-07, -1.1050622, 0, -1.3989825)
 mesh = SubResource("BoxMesh_al6tu")
 
-[node name="Table3" type="MeshInstance3D" parent="." unique_id=187132648]
-transform = Transform3D(-4.371139e-08, 0, -2.6353366, 0, 1, 0, 1, 0, -1.15194226e-07, -1.4779103, -0.13505566, 1.0770286)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1772994670]
+transform = Transform3D(-4.371139e-08, 0, -2.6353366, 0, 1, 0, 1, 0, -1.15194226e-07, -1.1050622, 0, -1.3989825)
+shape = SubResource("ConcavePolygonShape3D_ocqdx")
+
+[node name="Table3" type="MeshInstance3D" parent="StaticBody3D2" unique_id=187132648]
+transform = Transform3D(-4.371139e-08, 0, -2.6353366, 0, 1, 0, 1, 0, -1.15194226e-07, -1.1050622, 0, 1.3170885)
 mesh = SubResource("BoxMesh_al6tu")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1629707701]
+transform = Transform3D(-4.371139e-08, 0, -2.6353366, 0, 1, 0, 1, 0, -1.15194226e-07, -1.1050622, 0, 1.3170885)
+shape = SubResource("ConcavePolygonShape3D_tksun")
 
 [editable path="XrController"]
 [editable path="TextBillboard"]

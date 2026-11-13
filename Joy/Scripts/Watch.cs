@@ -39,4 +39,7 @@ public partial class Watch : Area3D
 	private void _on_timer_timeout(){
 		GetTree().ChangeSceneToFile(nextScene);
 	}
+
+    
+
 }

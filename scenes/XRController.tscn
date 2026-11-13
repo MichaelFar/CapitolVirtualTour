@@ -39,7 +39,7 @@ script = ExtResource("1_hf2p5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
 tracker = &"left_hand"
 
-[node name="Area3D" parent="XROrigin3D/LeftHand" unique_id=673361655 instance=ExtResource("2_u4pi3")]
+[node name="WatchScene" parent="XROrigin3D/LeftHand" unique_id=673361655 instance=ExtResource("2_u4pi3")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.12612712, -0.0647316)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/LeftHand" unique_id=371954073]
@@ -49,10 +49,16 @@ mesh = SubResource("BoxMesh_al6tu")
 
 [node name="Marker3D" type="Marker3D" parent="XROrigin3D/LeftHand" unique_id=540239332]
 
-[node name="HighlightShapeCast2" type="ShapeCast3D" parent="XROrigin3D/LeftHand" unique_id=333696289]
+[node name="HighlightShapeCast2" type="ShapeCast3D" parent="XROrigin3D/LeftHand" unique_id=333696289 node_paths=PackedStringArray("pickupParent", "hand")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012266636, 1.0023279, -0.5163512)
 shape = SubResource("BoxShape3D_bwg4x")
+collision_mask = 2
+collide_with_areas = true
 script = ExtResource("2_bwg4x")
+pickupParent = NodePath("../ItemPickupParent")
+hand = NodePath("..")
+
+[node name="ItemPickupParent" type="Marker3D" parent="XROrigin3D/LeftHand" unique_id=550957966]
 
 [node name="RightHand" type="XRController3D" parent="XROrigin3D" unique_id=468723929]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
@@ -64,19 +70,30 @@ mesh = SubResource("BoxMesh_al6tu")
 
 [node name="Marker3D" type="Marker3D" parent="XROrigin3D/RightHand" unique_id=231422726]
 
-[node name="HighlightShapeCast" type="ShapeCast3D" parent="XROrigin3D/RightHand" unique_id=242249355]
+[node name="HighlightShapeCast" type="ShapeCast3D" parent="XROrigin3D/RightHand" unique_id=242249355 node_paths=PackedStringArray("pickupParent", "hand")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0023279, -0.5163512)
 shape = SubResource("BoxShape3D_bwg4x")
+collision_mask = 3
+collide_with_areas = true
 script = ExtResource("2_bwg4x")
+pickupParent = NodePath("../ItemPickupParent")
+hand = NodePath("..")
 
 [node name="PlaceholderHandBodyForWatch" type="StaticBody3D" parent="XROrigin3D/RightHand" unique_id=2075964418]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.56206894)
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/RightHand/PlaceholderHandBodyForWatch" unique_id=361729459]
 shape = SubResource("BoxShape3D_u4pi3")
 
-[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=2010420355]
+[node name="ItemPickupParent" type="Marker3D" parent="XROrigin3D/RightHand" unique_id=1735825944]
+
+[node name="CameraRotationParent" type="Node3D" parent="XROrigin3D" unique_id=621323168]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D" unique_id=2010420355]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.7, 0)
 
 [node name="UIPlane" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" unique_id=298072856]
 transform = Transform3D(0.6488742, 0, 0, 0, -4.371139e-08, -0.39201087, 0, 1, -1.7135338e-08, 0, 0.03519249, -0.55170953)
