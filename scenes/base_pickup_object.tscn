@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bpf28vdl1yp3e" path="res://scripts/Pickup.cs" id="1_3uk5r"]
 [ext_resource type="Script" uid="uid://dayowdewkn7ik" path="res://scripts/HoverVolume.cs" id="2_qts3x"]
+[ext_resource type="PackedScene" uid="uid://6re0pt737gpr" path="res://Joy/Scenes/text_billboard.tscn" id="3_qts3x"]
 
 [sub_resource type="Shader" id="Shader_42c5h"]
 resource_local_to_scene = true
@@ -42,6 +43,18 @@ size = Vector3(0.2, 0.2, 0.2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_al6tu"]
 size = Vector3(0.2, 0.2, 0.2)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_3xyns"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6plh1"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_3xyns")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pyoog"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_6plh1")
+
 [node name="BasePickupObject" type="RigidBody3D" unique_id=380460483]
 script = ExtResource("1_3uk5r")
 
@@ -58,5 +71,9 @@ highlightMeshNode = NodePath("../MeshInstance3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HighlightVolume" unique_id=1176088458]
 shape = SubResource("BoxShape3D_al6tu")
+
+[node name="TextBillboard" parent="." unique_id=521224117 instance=ExtResource("3_qts3x")]
+transform = Transform3D(1.3454365e-07, -1.026, 2.8660285e-15, 4.4847884e-08, 1.960363e-15, -0.75, 1.026, 1.3454365e-07, 3.278354e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_pyoog")
 
 [connection signal="PickedUpStateChanged" from="." to="HighlightVolume" method="SetCanHover"]
