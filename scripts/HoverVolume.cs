@@ -26,7 +26,7 @@ public partial class HoverVolume : Area3D, IHover
     {
         if(highlightShader != null)
 		{
-			highlightShader.SetShaderParameter("size", 1.02);
+			highlightShader.SetShaderParameter("size", 1.08);
 			GD.Print(highlightShader.GetShaderParameter("size") + " is the value of size parameter");
 			GD.Print("Shader is not null!");
 			GD.Print(highlightShader);

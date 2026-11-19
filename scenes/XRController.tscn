@@ -4,13 +4,13 @@
 [ext_resource type="Script" uid="uid://bisd4fc722j65" path="res://scripts/HoverChecker.cs" id="2_bwg4x"]
 [ext_resource type="PackedScene" uid="uid://bsgbi87xwr6g0" path="res://Joy/Scenes/Watch.tscn" id="2_u4pi3"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_u4pi3"]
+size = Vector3(0.1, 0.1, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_al6tu"]
 size = Vector3(0.1, 0.1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bwg4x"]
-size = Vector3(0.1, 0.1, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_u4pi3"]
 size = Vector3(0.1, 0.1, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_g761s"]
@@ -32,6 +32,14 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="XrController" type="Node3D" unique_id=1912324114]
 script = ExtResource("1_hf2p5")
+
+[node name="PlaceholderHandBodyForWatch" type="StaticBody3D" parent="." unique_id=2075964418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -1.0620689)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlaceholderHandBodyForWatch" unique_id=361729459]
+shape = SubResource("BoxShape3D_u4pi3")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="." unique_id=1000825515]
 
@@ -78,14 +86,6 @@ collide_with_areas = true
 script = ExtResource("2_bwg4x")
 pickupParent = NodePath("../ItemPickupParent")
 hand = NodePath("..")
-
-[node name="PlaceholderHandBodyForWatch" type="StaticBody3D" parent="XROrigin3D/RightHand" unique_id=2075964418]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.56206894)
-collision_layer = 0
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/RightHand/PlaceholderHandBodyForWatch" unique_id=361729459]
-shape = SubResource("BoxShape3D_u4pi3")
 
 [node name="ItemPickupParent" type="Marker3D" parent="XROrigin3D/RightHand" unique_id=1735825944]
 

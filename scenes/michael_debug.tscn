@@ -7,7 +7,8 @@
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r5aeh"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_bottom_color = Color(0.2, 0.4, 0.13333334, 1)
+ground_horizon_color = Color(0.101960786, 0.3647059, 0.67058825, 1)
 
 [sub_resource type="Sky" id="Sky_ncmou"]
 sky_material = SubResource("ProceduralSkyMaterial_r5aeh")
@@ -15,7 +16,6 @@ sky_material = SubResource("ProceduralSkyMaterial_r5aeh")
 [sub_resource type="Environment" id="Environment_bm73g"]
 background_mode = 2
 sky = SubResource("Sky_ncmou")
-glow_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wd65j"]
 
@@ -43,7 +43,7 @@ void fragment() {
 resource_local_to_scene = true
 render_priority = 1
 shader = SubResource("Shader_ncmou")
-shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/color = Color(1, 0.48235294, 0, 1)
 shader_parameter/size = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42c5h"]
@@ -78,7 +78,7 @@ void fragment() {
 resource_local_to_scene = true
 render_priority = 1
 shader = SubResource("Shader_bm73g")
-shader_parameter/color = Color(0.5882353, 1, 0.2509804, 1)
+shader_parameter/color = Color(0.22352941, 0.41960785, 1, 1)
 shader_parameter/size = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocqdx"]
@@ -110,7 +110,7 @@ void fragment() {
 resource_local_to_scene = true
 render_priority = 1
 shader = SubResource("Shader_lh3q3")
-shader_parameter/color = Color(0.5882353, 0, 1, 1)
+shader_parameter/color = Color(0.827451, 0, 0.11372549, 1)
 shader_parameter/size = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qssnw"]
@@ -120,13 +120,13 @@ next_pass = SubResource("ShaderMaterial_6cvb5")
 [sub_resource type="BoxMesh" id="BoxMesh_hjgwc"]
 material = SubResource("StandardMaterial3D_qssnw")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ocqdx"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_42c5h"]
 viewport_path = NodePath("XROrigin3D/XRCamera3D/UIPlane/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tksun"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = SubResource("ViewportTexture_ocqdx")
+albedo_texture = SubResource("ViewportTexture_42c5h")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lh3q3"]
 resource_local_to_scene = true
@@ -162,7 +162,7 @@ data = PackedVector3Array(-0.3098, 0.5, 0.5, 0.3098, 0.5, 0.5, -0.3098, -0.5, 0.
 [node name="MichaelDebug" type="Node3D" unique_id=2004663829]
 
 [node name="BasePickupObject" parent="." unique_id=380460483 instance=ExtResource("1_42c5h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47230303, 1.4241625, 0.72377574)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47230303, 0.5499233, 0.72377574)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=374733017]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -202,18 +202,6 @@ script = ExtResource("2_bm73g")
 highlightMeshNode = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestHighlightObject2/HighlightVolume" unique_id=2018398510]
-shape = SubResource("ConcavePolygonShape3D_42c5h")
-
-[node name="TestHighlightObject3" type="MeshInstance3D" parent="." unique_id=1246164636]
-transform = Transform3D(0.204, 0, 0, 0, 0.2, 0, 0, 0, 0.229, -1.2978841, 0.5414758, -1.6454704)
-mesh = SubResource("BoxMesh_hjgwc")
-
-[node name="HighlightVolume" type="Area3D" parent="TestHighlightObject3" unique_id=2004966094 node_paths=PackedStringArray("highlightMeshNode")]
-collision_layer = 2
-script = ExtResource("2_bm73g")
-highlightMeshNode = NodePath("..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TestHighlightObject3/HighlightVolume" unique_id=1809472451]
 shape = SubResource("ConcavePolygonShape3D_42c5h")
 
 [node name="TestHighlightObject4" type="MeshInstance3D" parent="." unique_id=1903353188]
@@ -266,6 +254,8 @@ paragraphs = PackedStringArray("test paragraph 1", "test paragraph 2")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=467343002]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37284803, -0.13505566, -0.24005985)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Table" type="MeshInstance3D" parent="StaticBody3D2" unique_id=889905684]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.6353366, 0, 0, 0)
