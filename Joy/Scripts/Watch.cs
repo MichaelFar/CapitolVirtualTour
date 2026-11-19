@@ -4,7 +4,7 @@ using System.Collections;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-public partial class Watch : Area3D
+public partial class Watch : Area3D, IInteractable
 {
 	[Export]
 	private Timer timer;
@@ -26,7 +26,7 @@ public partial class Watch : Area3D
 	{
 	}
 
-	private void _on_body_entered(Node3D body){
+	/*private void _on_body_entered(Node3D body){
 		Debug.Print("Starting Timer");
 		timer.Start();
 	}
@@ -35,11 +35,29 @@ public partial class Watch : Area3D
 		Debug.Print("Stopping Timer");
 		timer.Stop();
 	}
-
+	*/
 	private void _on_timer_timeout(){
 		GetTree().ChangeSceneToFile(nextScene);
 	}
 
-    
+    public void OnInteract(Node3D interaction_source)
+    {
+		Debug.Print("Starting Timer");
+		timer.Start();
+    }
 
+    public bool CanInteract()
+    {
+        return true;
+    }
+
+    public void SetCanInteract(bool new_value)
+    {
+    }
+
+    public void OnRelease()
+    {
+       	Debug.Print("Stopping Timer");
+		timer.Stop();
+    }
 }

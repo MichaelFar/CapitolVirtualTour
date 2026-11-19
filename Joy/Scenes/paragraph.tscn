@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://btv1sy4k046ue"]
+
+[ext_resource type="LabelSettings" uid="uid://bsoicnjfdmoyt" path="res://Joy/Fonts/Paragraph.tres" id="1_7ulcx"]
+[ext_resource type="Script" uid="uid://cusq6wiosnho5" path="res://Joy/Scripts/Paragraph.cs" id="2_4vsgf"]
+
+[node name="Paragraph" type="Label" unique_id=778020835]
+anchors_preset = -1
+anchor_right = 0.011000001
+offset_right = -0.30400467
+offset_bottom = 23.0
+label_settings = ExtResource("1_7ulcx")
+autowrap_mode = 2
+script = ExtResource("2_4vsgf")
