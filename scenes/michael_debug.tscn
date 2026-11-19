@@ -250,7 +250,7 @@ mesh = SubResource("PlaneMesh_lh3q3")
 transform = Transform3D(1.3454365e-07, -1.026, 2.8660285e-15, 4.4847884e-08, 1.960363e-15, -0.75, 1.026, 1.3454365e-07, 3.2783543e-08, -0.1376524, 0.84375596, 0.13823164)
 mesh = SubResource("PlaneMesh_b13hh")
 title = "title"
-paragraphs = PackedStringArray("test paragraph 1", "test paragraph 2")
+paragraphs = PackedStringArray("test paragraph 1", "test paragraph 2 ")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=467343002]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37284803, -0.13505566, -0.24005985)
@@ -282,4 +282,3 @@ transform = Transform3D(-4.371139e-08, 0, -2.6353366, 0, 1, 0, 1, 0, -1.15194226
 shape = SubResource("ConcavePolygonShape3D_tksun")
 
 [editable path="XrController"]
-[editable path="TextBillboard"]
