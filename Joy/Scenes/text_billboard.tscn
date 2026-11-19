@@ -28,6 +28,7 @@ labelSet = Array[LabelSettings]([ExtResource("2_15wcp"), ExtResource("3_tf4tb"),
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=315963517]
 transparent_bg = true
+canvas_item_default_texture_filter = 0
 
 [node name="ColorRect" type="ColorRect" parent="SubViewport" unique_id=1350367733]
 anchors_preset = -1
