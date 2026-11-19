@@ -2,6 +2,7 @@ using Godot;
 using System;
 public partial class TextBillboard : MeshInstance3D
 {
+	private PackedScene paragraphScene = GD.Load<PackedScene>("res://Joy/Scenes/paragraph.tscn");
 
 	[Export]
 	private string title;
@@ -19,13 +20,17 @@ public partial class TextBillboard : MeshInstance3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Label titleLabel = new Label();
+		var titleNode = paragraphScene.Instantiate();
+		Label titleLabel = titleNode as Label;
 		titleLabel.Text = title;
 		titleLabel.LabelSettings = labelSet[1];
 		vbox.AddChild(titleLabel);
 
+		
+
 		foreach(string lines in paragraphs){
-			Label newLabel = new Label();
+			var labelNode = paragraphScene.Instantiate();
+			Label newLabel = labelNode as Label;
 			newLabel.Text = lines;
 			newLabel.LabelSettings = labelSet[0];
 			vbox.AddChild(newLabel);
